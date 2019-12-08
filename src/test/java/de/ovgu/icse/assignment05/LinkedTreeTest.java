@@ -19,7 +19,7 @@ public class LinkedTreeTest {
     @Mock
     LinkedTree mockedTree;
     LinkedTree<String> x;
-    
+
     @BeforeEach
     public void init() {
         MockitoAnnotations.initMocks(this);
@@ -74,20 +74,19 @@ public class LinkedTreeTest {
         Mockito.when(mockedTree.inorder(0)).
             thenReturn(new LinkedList(Arrays.asList("LeftLeft", "Left", "LeftRight", "Root", "RightLeft", "Right", "RightRight")));
     }
-    
     @Test
     public final void deleteTest() {
         LinkedList<String>[] elements = new LinkedList[4];
-        
+
         elements[0] = x.delete(100);
         elements[1] = x.delete(20);
         elements[2] = x.delete(150);
         elements[3] = x.delete(200);
-        
-        
+
+
         for (int i = 0; i < elements.length; i++)
             assertTrue(elements[i] != null && elements[i].size() == 1);
-            
+
         assertTrue(elements[0].get(0).equals("Root"));
         assertTrue(elements[1].get(0).equals("LeftLeft"));
         assertTrue(elements[2].get(0).equals("Right"));
@@ -101,6 +100,6 @@ public class LinkedTreeTest {
         assertNull(x.search(20));
         assertNull(x.search(150));
         assertNull(x.search(200));
-        
+
     }
 }
